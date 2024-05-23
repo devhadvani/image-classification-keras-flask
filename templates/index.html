@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+</head>
+<body>
+    <h1>Image Classification with CIFAR-10</h1>
+    <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" multiple>
+        <input type="submit" value="Upload and Classify">
+    </form>
+
+    {% if predictions %}
+        <h2>Classification Results:</h2>
+        {% for class_name, images in predictions.items() %}
+            <h3>{{ class_name }} ({{ images|length }}):</h3>
+            <div>
+                {% for image in images %}
+                    <img src="{{ image }}" alt="{{ class_name }}" style="max-width: 100px; margin: 5px;">
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
