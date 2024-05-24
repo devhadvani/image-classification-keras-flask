@@ -9,7 +9,7 @@ from collections import defaultdict
 app = Flask(__name__)
 
 # Load the trained model -
-model = load_model('cifar10_model2.h5')
+model = load_model('cifar10_model.h5')
 
 # Define the classes
 classes = ["airplane","automobile","bird","cat","deer","dog","frog","horse","ship","truck"]
